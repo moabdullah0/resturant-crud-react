@@ -1,19 +1,17 @@
-
-
+import { useState } from "react";
 import "./App.css";
 
+import LandingPage from "./components/pages/LandingPage";
+import DasboardHome from "./components/Dashboard/DasboardHome";
 import Navbar from "./components/Navbar";
-import HeroSection from "./components/pages/Landing/HeroSection";
-import ServiceSection from "./components/pages/Landing/ServiceSection";
 
 function App() {
-
-
+  const [nav, setNav] = useState("home");
   return (
     <div dir="rtl">
-      <Navbar />
-      <HeroSection/>
-      <ServiceSection/>
+      <Navbar setNav={setNav} />
+      {nav === "home" && <LandingPage />}
+      {nav === "dashboard" && <DasboardHome />}
     </div>
   );
 }

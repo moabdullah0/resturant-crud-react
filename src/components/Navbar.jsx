@@ -1,7 +1,7 @@
 import { FaLanguage, FaBars } from "react-icons/fa6";
 import { useState } from "react";
 
-const Navbar = () => {
+const Navbar = ({ setNav }) => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
@@ -26,13 +26,21 @@ const Navbar = () => {
           } absolute top-16 left-0 w-full bg-white shadow-md lg:shadow-none lg:flex lg:static lg:w-auto lg:gap-10 text-gray-700 text-lg font-semibold rtl:text-right transition`}
         >
           <li className="p-4 lg:p-0">
-            <a href="#" className="hover:text-primary transition-colors">
+            <a
+              onClick={() => setNav("home")}
+              href="#"
+              className="hover:text-primary transition-colors"
+            >
               الرئيسية
             </a>
           </li>
           <li className="p-4 lg:p-0">
-            <a href="#" className="hover:text-primary transition-colors">
-              القائمة
+            <a
+              onClick={() => setNav("dashboard")}
+              href="#"
+              className="hover:text-primary transition-colors"
+            >
+              الادارة
             </a>
           </li>
           <li className="p-4 lg:p-0">
