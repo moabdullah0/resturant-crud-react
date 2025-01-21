@@ -1,16 +1,20 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
+
+
 import "./App.css";
-import DasboardHome from "./components/Dashboard/DasboardHome";
+
+import Navbar from "./components/Navbar";
+import HeroSection from "./components/pages/Landing/HeroSection";
+import ServiceSection from "./components/pages/Landing/ServiceSection";
 
 function App() {
-  const [count, setCount] = useState(0);
+
 
   return (
-    <>
-      <DasboardHome />
-    </>
+    <div dir="rtl">
+      <Navbar />
+      <HeroSection/>
+      <ServiceSection/>
+    </div>
   );
 }
 

@@ -1,13 +1,14 @@
-  import React, { useState } from "react";
+
   import { FaEdit, FaTrash,FaEye } from "react-icons/fa";
-  import PopUp from "./PopUp";
   import useProduct from "../../hooks/useProduct";
   import apiClient from "../../../Services/api-Client";
-  import PostProduct from "./PostProduct";
   import ViewItem from "./ViewItem";
+import PopUp from "./components/PopUp";
+import PostProduct from "./components/ActionProduct";
+import Loading from "./components/Loading";
 
   const DasboardHome = () => {
-    const { product, error, setProduct } = useProduct();
+    const { product, error, setProduct,loading } = useProduct();
 
     const deleteProduct = async (id) => {
       try {
@@ -18,7 +19,7 @@
       }
     };
 
-    
+    if (loading) return <Loading/>
 
     return (
       <div className="mx-5 mt-10 flex flex-col space-y-5">
