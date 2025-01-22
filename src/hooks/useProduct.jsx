@@ -25,7 +25,9 @@ const useProduct = () => {
       throw err;
     }
   };
-
+  const deleteProduct = async (productID) => {
+    return apiClient.delete(`/items/${productID}`);
+  };
   useEffect(() => {
     const getProduct = async () => {
       setLoading(true);
@@ -43,7 +45,15 @@ const useProduct = () => {
     getProduct();
   }, []);
 
-  return { product, error, setProduct, loading, handleUpdate, handlePost };
+  return {
+    product,
+    error,
+    setProduct,
+    loading,
+    handleUpdate,
+    handlePost,
+    deleteProduct,
+  };
 };
 
 export default useProduct;
