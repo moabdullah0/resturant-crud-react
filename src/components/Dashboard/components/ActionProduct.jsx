@@ -1,19 +1,16 @@
 import ProductForm from "./ProductForm";
-import apiClient from "../../../../Services/api-Client";
+import useProduct from "../../../hooks/useProduct";
 
 const PostProduct = ({ productToEdit }) => {
+  const { handleUpdate, handlePost } = useProduct();
+
   const handleFormSubmit = async (data) => {
     try {
       if (productToEdit) {
-        const response = await apiClient.put(
-          `/items/${productToEdit.id}`,
-          data
-        );
-        console.log("Product updated:", response.data);
+        await handleUpdate(productToEdit, data);
         alert("Product updated successfully!");
       } else {
-        const response = await apiClient.post("/items", data);
-        console.log("Product added:", response.data);
+        await handlePost(data); 
         alert("Product added successfully!");
       }
     } catch (error) {

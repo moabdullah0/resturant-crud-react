@@ -1,6 +1,5 @@
 import { Button, Dialog, DialogPanel, DialogTitle } from "@headlessui/react";
 import { useState } from "react";
-// import PostProduct from "./PostProduct";
 import { MdCancel } from "react-icons/md";
 
 export default function PopUp({ children,title,titlePupup }) {
@@ -18,7 +17,7 @@ export default function PopUp({ children,title,titlePupup }) {
     <>
       <Button
         onClick={open}
-        className="bg-orange-500 w-[15%] text-center items-center text-white font-bold px-5 py-2 rounded-lg "
+        className="bg-orange-500 w-[15%] mx-5 flex justify-center text-white font-bold px-5 py-2 rounded-lg "
       >
         {title}
       </Button>

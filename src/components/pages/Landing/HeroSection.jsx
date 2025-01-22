@@ -30,9 +30,9 @@ const HeroSection = () => {
   };
 
   return (
-    <div className="relative w-[100vw] place-items-center bg-custom-gradient flex items-center justify-center py-10">
-      <div className="grid grid-cols-1 lg:grid-cols-2 justify-center items-center px-0 gap-8">
-        {/* Animated Image */}
+    <div className="relative w-[100vw] place-items-center bg-custom-gradient flex items-center justify-center ">
+      <div className="grid grid-cols-1 lg:grid-cols-2 justify-center items-center px-0 ">
+     
         <motion.img
           src="/assets/LandingImage.svg"
           className="rounded-xl w-full "
@@ -42,7 +42,7 @@ const HeroSection = () => {
           animate="visible"
         />
 
-        {/* Text and Input Section */}
+       
         <motion.div
           className="text-center flex flex-col justify-center items-center"
           variants={textAnimation}
@@ -70,7 +70,7 @@ const HeroSection = () => {
             </p>
           </div>
 
-          {/* Animated Input and Button */}
+        
           <motion.div
             dir="ltr"
             className="mt-5 flex w-[100%] lg:w-[50%] border border-gray-500 items-center px-5 rounded-full"
@@ -88,7 +88,7 @@ const HeroSection = () => {
             </span>
           </motion.div>
 
-          {/* Animated Call-to-Action Button */}
+       
           <motion.button
             type="button"
             className="text-white bg-red-500 rounded-full font-medium mt-10 px-5 py-2 hover:bg-red-600 transition"
