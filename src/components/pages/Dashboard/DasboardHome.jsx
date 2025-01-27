@@ -1,11 +1,11 @@
 
   import { FaEdit, FaTrash,FaEye } from "react-icons/fa";
-  import useProduct from "../../hooks/useProduct";
-  import apiClient from "../../../Services/api-Client";
-  import ViewItem from "./ViewItem";
-import PopUp from "./components/PopUp";
+import useProduct from "../../../hooks/useProduct";
 import PostProduct from "./components/ActionProduct";
+import PopUp from "./components/PopUp";
+import ViewItem from "./ViewItem";
 import Loading from "./components/Loading";
+ 
 
   const DasboardHome = () => {
     const { product, error, setProduct,loading } = useProduct();

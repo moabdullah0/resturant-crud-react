@@ -17,7 +17,7 @@ export default function PopUp({ children,title,titlePupup }) {
     <>
       <Button
         onClick={open}
-        className="bg-orange-500 w-[15%] mx-5 flex justify-center text-white font-bold px-5 py-2 rounded-lg "
+        className="bg-primary w-[15%] mx-5 flex justify-center text-white font-bold px-5 py-2 rounded-lg "
       >
         {title}
       </Button>

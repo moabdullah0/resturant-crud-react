@@ -15,7 +15,9 @@ const useProduct = () => {
       throw err;
     }
   };
-
+  const viewItem = async (id) => {
+    return await apiClient.get(`items/${id}`);
+  };
   const handlePost = async (data) => {
     try {
       const response = await apiClient.post(`/items`, data);
@@ -53,6 +55,7 @@ const useProduct = () => {
     handleUpdate,
     handlePost,
     deleteProduct,
+    viewItem,
   };
 };
 

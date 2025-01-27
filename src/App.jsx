@@ -1,9 +1,9 @@
 import { useState } from "react";
 import "./App.css";
 
-import LandingPage from "./components/pages/LandingPage";
-import DasboardHome from "./components/Dashboard/DasboardHome";
-import Navbar from "./components/Navbar";
+import LandingPage from "./components/pages/Landing/LandingPage";
+import DasboardHome from "./components/pages/Dashboard/DasboardHome";
+import Navbar from "./components/pages/Layout/Navbar";
 
 function App() {
   const [nav, setNav] = useState("home");

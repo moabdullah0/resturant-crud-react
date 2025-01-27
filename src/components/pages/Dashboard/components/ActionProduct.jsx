@@ -1,5 +1,5 @@
+import useProduct from "../../../../hooks/useProduct";
 import ProductForm from "./ProductForm";
-import useProduct from "../../../hooks/useProduct";
 
 const PostProduct = ({ productToEdit }) => {
   const { handleUpdate, handlePost } = useProduct();
