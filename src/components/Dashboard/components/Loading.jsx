@@ -19,7 +19,7 @@ const Loading = () => {
             </thead>
             <tbody>
               {
-                Array.from({ length: 12 }).map((_, index) => (
+                Array.from({ length: 5 }).map((_, index) => (
                   <tr
                     key={index}
                     className="bg-white border border-blue-400 hover:bg-gray-100"

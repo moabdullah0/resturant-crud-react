@@ -1,10 +1,26 @@
-import { useEffect, useState } from "react";
+import useData from "./useData";
 import apiClient from "../../Services/api-Client";
 
-const useProduct = () => {
-  const [product, setProduct] = useState([]);
-  const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
+const useProduct = (ProductStatus) => {
+  const { data, error, loading } = useData(
+    "/items",
+    {
+      params: {
+        status: ProductStatus,
+      },
+    },
+    [ProductStatus]
+  );
+
+  const handlePost = async (data) => {
+    try {
+      const response = await apiClient.post("/items", data);
+      return response.data;
+    } catch (err) {
+      console.error("Error adding product:", err);
+      throw err;
+    }
+  };
 
   const handleUpdate = async (productToEdit, data) => {
     try {
@@ -16,43 +32,23 @@ const useProduct = () => {
     }
   };
 
-  const handlePost = async (data) => {
+  const handleDelete = async (productID) => {
     try {
-      const response = await apiClient.post(`/items`, data);
+      const response = await apiClient.delete(`/items/${productID}`);
       return response.data;
     } catch (err) {
-      console.error("Error adding product:", err);
+      console.error("Error deleting product:", err);
       throw err;
     }
   };
-  const deleteProduct = async (productID) => {
-    return apiClient.delete(`/items/${productID}`);
-  };
-  useEffect(() => {
-    const getProduct = async () => {
-      setLoading(true);
-      try {
-        const response = await apiClient.get("/items");
-        setProduct(response.data);
-      } catch (err) {
-        console.error("Error fetching products:", err);
-        setError(err.message);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    getProduct();
-  }, []);
 
   return {
-    product,
+    data,
     error,
-    setProduct,
     loading,
-    handleUpdate,
     handlePost,
-    deleteProduct,
+    handleUpdate,
+    handleDelete,
   };
 };
 

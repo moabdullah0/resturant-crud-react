@@ -17,7 +17,7 @@ export default function PopUp({ children,title,titlePupup }) {
     <>
       <Button
         onClick={open}
-        className="bg-orange-500 w-[15%] mx-5 flex justify-center text-white font-bold px-5 py-2 rounded-lg "
+        className="bg-primary w-[15%] mx-5 flex justify-center text-white font-bold px-5 py-2 rounded-lg "
       >
         {title}
       </Button>
@@ -33,7 +33,7 @@ export default function PopUp({ children,title,titlePupup }) {
           <div className="flex min-h-full items-center justify-center p-4">
             <DialogPanel
               transition
-              className="w-full max-w-md rounded-xl bg-orange-200 p-6 backdrop-blur-2xl duration-300 ease-out data-[closed]:transform-[scale(95%)] data-[closed]:opacity-0"
+              className="w-full max-w-md rounded-xl bg-orange-300 p-6 backdrop-blur-2xl duration-300 ease-out data-[closed]:transform-[scale(95%)] data-[closed]:opacity-0"
             >
               <div className="mt-4 flex flex-row-reverse justify-between">
                 <Button

@@ -87,7 +87,7 @@ const ProductForm = ({ initialData, onSubmit }) => {
 
         <button
           type="submit"
-          className="w-full px-4 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600"
+          className="w-full px-4 py-2 bg-primary text-white rounded-lg hover:bg-orange-300"
         >
           {initialData ? "Update Product" : "Add Product"}
         </button>
