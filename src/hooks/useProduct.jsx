@@ -31,36 +31,24 @@ const useProduct = (ProductStatus) => {
       throw err;
     }
   };
-<<<<<<< HEAD
 
   const handleDelete = async (productID) => {
-=======
+    return apiClient.delete(`/items/${productID}`);
+  }
   const viewItem = async (id) => {
     return await apiClient.get(`items/${id}`);
   };
-  const handlePost = async (data) => {
->>>>>>> 965ab53f7d3d5f2b1cbdcb8ffe1ff513027b85ad
-    try {
-      const response = await apiClient.delete(`/items/${productID}`);
-      return response.data;
-    } catch (err) {
-      console.error("Error deleting product:", err);
-      throw err;
-    }
-  };
+  
 
   return {
     data,
     error,
     loading,
     handlePost,
-<<<<<<< HEAD
+    viewItem,
     handleUpdate,
     handleDelete,
-=======
-    deleteProduct,
-    viewItem,
->>>>>>> 965ab53f7d3d5f2b1cbdcb8ffe1ff513027b85ad
+
   };
 };
 

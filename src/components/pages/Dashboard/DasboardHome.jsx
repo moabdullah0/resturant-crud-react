@@ -6,15 +6,13 @@ import PostProduct from "./components/ActionProduct";
 import PopUp from "./components/PopUp";
 import ViewItem from "./ViewItem";
 import Loading from "./components/Loading";
-<<<<<<< HEAD:src/components/Dashboard/DasboardHome.jsx
 import DeleteAction from "./components/DeleteAction";
 // import { CiSearch } from "react-icons/ci";
 import { useState } from "react";
 import SearchInput from "./components/SearchInput";
 import SeslectITems from "./components/SelectITems";
-=======
+
  
->>>>>>> 965ab53f7d3d5f2b1cbdcb8ffe1ff513027b85ad:src/components/pages/Dashboard/DasboardHome.jsx
 
 const DasboardHome = () => {
   const [searchTerm, setSearchTerm] = useState(""); 
