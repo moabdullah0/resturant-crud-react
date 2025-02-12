@@ -16,9 +16,9 @@ import SeslectITems from "./components/SelectITems";
 
 const DasboardHome = () => {
   const [searchTerm, setSearchTerm] = useState(""); 
-  const { data: products, error, loading } = useProduct(searchTerm); 
+  const { data: products, error, isLoading } = useProduct(searchTerm); 
 
-  if (loading) return <Loading />; 
+  if (isLoading) return <Loading />; 
 
   return (
     <div className="mx-5 mt-10 flex flex-col space-y-5">

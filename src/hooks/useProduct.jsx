@@ -1,54 +1,85 @@
 import useData from "./useData";
 import apiClient from "../../Services/api-Client";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 const useProduct = (ProductStatus) => {
-  const { data, error, loading } = useData(
-    "/items",
-    {
-      params: {
-        status: ProductStatus,
-      },
+  const queryClient = useQueryClient();
+  const { data, error, isLoading } = useQuery({
+    queryKey: ["items", ProductStatus],
+    queryFn: () =>
+      apiClient
+        .get("/items", {
+          params: {
+            status: ProductStatus,
+          },
+        })
+        .then((res) => res.data),
+  });
+  const handlePost = useMutation({
+    mutationFn: (newPost) =>
+      apiClient.post("/items", newPost).then((res) => res.data),
+    onMutate: async (newPost) => {
+      queryClient.setQueryData("items", (oldData) => [
+        ...(oldData || []),
+        newPost,
+      ]);
     },
-    [ProductStatus]
-  );
+    onError: (err, newPost, context) => {
+      queryClient.setQueryData("items", context.previousData);
+    },
+    onSettled: () => {
+      queryClient.invalidateQueries("items");
+    },
+  });
 
-  const handlePost = async (data) => {
-    try {
-      const response = await apiClient.post("/items", data);
-      return response.data;
-    } catch (err) {
-      console.error("Error adding product:", err);
-      throw err;
-    }
-  };
+  const handleUpdate = useMutation({
+    mutationFn: async ({ productToEdit, updatedData }) =>
+      apiClient
+        .put(`/items/${productToEdit.id}`, updatedData)
+        .then((res) => res.data),
 
-  const handleUpdate = async (productToEdit, data) => {
-    try {
-      const response = await apiClient.put(`/items/${productToEdit.id}`, data);
-      return response.data;
-    } catch (err) {
-      console.error("Error updating product:", err);
-      throw err;
-    }
-  };
+    onMutate: async ({ productToEdit, updatedData }) => {
+      await queryClient.cancelQueries("items");
 
-  const handleDelete = async (productID) => {
-    return apiClient.delete(`/items/${productID}`);
-  }
+      const previousData = queryClient.getQueryData("items");
+
+      queryClient.setQueryData("items", (oldData) =>
+        oldData
+          ? oldData.map((item) =>
+              item.id === productToEdit.id ? { ...item, ...updatedData } : item
+            )
+          : []
+      );
+
+      return { previousData };
+    },
+
+    onError: (context) => {
+      queryClient.setQueryData("items", context.previousData);
+    },
+
+    onSettled: () => {
+      queryClient.invalidateQueries("items");
+    },
+  });
+
+  const handleDelete = useMutation({
+    mutationFn: async (productID) =>
+      await apiClient.delete("/items/" + productID).then((res) => res.data),
+    onSuccess: () => queryClient.invalidateQueries("items"),
+  });
   const viewItem = async (id) => {
     return await apiClient.get(`items/${id}`);
   };
-  
 
   return {
     data,
     error,
-    loading,
+    isLoading,
     handlePost,
     viewItem,
     handleUpdate,
     handleDelete,
-
   };
 };
 

@@ -7,10 +7,10 @@ const PostProduct = ({ productToEdit }) => {
   const handleFormSubmit = async (data) => {
     try {
       if (productToEdit) {
-        await handleUpdate(productToEdit, data);
+        await handleUpdate.mutateAsync({ productToEdit, updatedData: data });
         alert("Product updated successfully!");
       } else {
-        await handlePost(data); 
+        await handlePost.mutateAsync(data);
         alert("Product added successfully!");
       }
     } catch (error) {
@@ -18,6 +18,7 @@ const PostProduct = ({ productToEdit }) => {
       alert("Operation failed!");
     }
   };
+  
 
   return (
     <ProductForm initialData={productToEdit} onSubmit={handleFormSubmit} />
