@@ -1,16 +1,15 @@
 
 
   import { FaEdit, FaTrash,FaEye } from "react-icons/fa";
-import useProduct from "../../../hooks/useProduct";
-import PostProduct from "./components/ActionProduct";
-import PopUp from "./components/PopUp";
-import ViewItem from "./ViewItem";
-import Loading from "./components/Loading";
-import DeleteAction from "./components/DeleteAction";
-// import { CiSearch } from "react-icons/ci";
+import PopUp from "../../../components/PopUp";
+import Loading from "../../../components/Loading";
 import { useState } from "react";
-import SearchInput from "./components/SearchInput";
-import SeslectITems from "./components/SelectITems";
+import SearchInput from "../../../components/SearchInput";
+import SeslectITems from "../../../components/SelectITems";
+import PostProduct from "./ActionProduct";
+import ViewItem from "./ViewItem";
+import DeleteAction from "./DeleteAction";
+import useProduct from "../../../hooks/useProduct";
 
  
 

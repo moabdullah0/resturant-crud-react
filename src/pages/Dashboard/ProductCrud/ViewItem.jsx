@@ -1,13 +1,14 @@
 import { useState, useEffect } from "react";
-import useProduct from "../../hooks/useProduct";
+import useProduct from "../../../hooks/useProduct";
 
 const ViewItem = ({ itemID }) => {
   const [data, setData] = useState({});
-  const { getProuctItem } = useProduct();
+  const { viewItem } = useProduct();
+console.log(itemID)
   useEffect(() => {
-    getProuctItem(itemID).then((res) => setData(res.data));
+    viewItem(itemID).then((res) => setData(res.data));
   }, [itemID]);
-
+console.log(data)
   return (
     <div dir="rtl" className="p-6  rounded-lg ">
       <ul className="space-y-4">

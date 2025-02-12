@@ -1,7 +1,6 @@
-import React from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { productSchema } from "../../../../Validation/schemaProduct";
+import { productSchema } from "../../../Validation/schemaProduct";
 
 
 
